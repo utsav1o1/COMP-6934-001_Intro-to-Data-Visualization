@@ -1,0 +1,78 @@
+\documentclass[12pt,letterpaper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage[margin=0.9in,top=0.75in,bottom=0.75in]{geometry}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{ink2}{HTML}{52514E}
+\definecolor{rule}{HTML}{C3C2B7}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\titleformat{\section}{\normalsize\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{7pt}{2pt}
+\setlist{itemsep=1pt,topsep=2pt,parsep=0pt,leftmargin=1.6em}
+
+\begin{document}
+
+{\small\color{ink2}COMP 6934 Data Visualization \hfill Project Proposal \hfill Group 16}\\[-4pt]
+{\color{rule}\rule{\linewidth}{0.5pt}}
+
+\begin{center}
+{\Large\bfseries Less Fish, More Money?}\\[3pt]
+{\large Three Decades of Change in Canada's Commercial Sea Fisheries, 1990--2024}\\[6pt]
+{\small Utsav Karki (202683489) \quad\textperiodcentered\quad Lata Airee (202680103) \quad\textperiodcentered\quad Abishek Paudel (202684964)}
+\end{center}
+
+\section{Dataset}
+We will use \emph{Commercial Seafisheries Landings, 1990--2024}, published by Fisheries and
+Oceans Canada (DFO) from its Zonal Interchange File database
+(\url{https://www.dfo-mpo.gc.ca/stats/commercial/sea-maritimes-eng.htm}). The table has about
+10{,}600 records. Each record gives, for one year, one region and one species, the
+\textbf{landed quantity} (kg, live weight) and the \textbf{landed value} (CAD paid to harvesters at
+the dock). It covers 35 years, the five Atlantic provinces (NL, NS, NB, PE, QC), British
+Columbia, and Atlantic and national totals. It includes 33 species, such as cod, lobster, snow
+crab, herring and salmon, grouped into four groups: groundfish, pelagics, shellfish and other.
+Some provincial species values are suppressed (``x'') for confidentiality, but all group and
+national totals are complete. To compare dollars across three decades fairly, we will adjust
+values for inflation using the Statistics Canada Consumer Price Index (Table 18-10-0005-01).
+
+\section{Why this dataset}
+In 1992 Canada closed the northern cod fishery off Newfoundland and Labrador after the stock
+collapsed, one of the best-known fisheries failures in the world. For us, studying at Memorial
+University, this history is close to home, because the fishery shaped the economy and
+communities of this province. The moratorium is usually remembered only as a loss. This dataset
+covers the entire period after the collapse, so we can see what the industry became: which
+species replaced cod, whether the fishery recovered in economic terms, and which provinces won
+or lost. The questions matter to fisheries managers, coastal communities and anyone interested
+in how an economy adapts after a natural resource collapses. Because the data has several
+dimensions (time, geography, species, quantity and value), it is well suited to a range of
+visualization types.
+
+\section{Questions we intend to investigate}
+\begin{enumerate}[label=\textbf{Q\arabic*.}, leftmargin=2.3em]
+  \item \textbf{Growth or decline?} Has Canada's sea fishery grown or shrunk since 1990, and does
+        the answer change when it is measured in tonnes rather than in inflation-adjusted dollars?
+  \item \textbf{What replaced groundfish?} Which species groups and species filled the gap left
+        by the collapse of cod and other groundfish, and was the collapse limited to cod?
+  \item \textbf{Quantity or price?} Is any growth in value driven by catching more fish, or by
+        each kilogram becoming more valuable?
+  \item \textbf{Who, and at what risk?} How were these changes distributed across provinces,
+        and has the fishery become dependent on a small number of species?
+\end{enumerate}
+
+\section{Planned approach}
+We will clean and analyse the data in Python (pandas, seaborn, matplotlib and scipy in a Jupyter
+notebook). Our plots will include line charts of volume against value indexed to 1990, stacked
+area charts of species-group composition, a species-by-year heatmap, a 1990-versus-2024 dumbbell
+chart, price-against-quantity scatter plots, provincial stacked bar charts, and box plots of
+year-to-year volatility. Each plot will support a specific answer to one of the questions above.
+
+\end{document}
